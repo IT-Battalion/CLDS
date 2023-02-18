@@ -26,4 +26,5 @@ class View(QMainWindow):
         self.statusbar.showMessage(msg)
 
     def change_result(self, r: str):
-        self.result.setText(r)
+        curs = self.result.textCursor()
+        curs.insertHtml(r)
