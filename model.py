@@ -14,8 +14,10 @@ class LangResp:
         pass
 
     def execute(self, text: str):
-        req = requests.get('http://localhost:5000/lg', params={
+        req = requests.get('http://127.0.0.1:5000/lg', params={
             'id': text
         })
-        parsed_json = json.loads(req.content)
-        return preview_data(parsed_json)
+        if req.status_code == 200:
+            parsed_json = json.loads(req.content)
+            return preview_data(parsed_json)
+        return "Error: " + req.reason + "(" + str(req.status_code) + ")"

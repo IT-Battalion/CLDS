@@ -20,11 +20,10 @@ class View(QMainWindow):
         self.result.setText('')
 
     def get_text(self):
-        return self.text
+        return self.text.toPlainText()
 
     def show_message_status(self, msg: str):
         self.statusbar.showMessage(msg)
 
     def change_result(self, r: str):
-        curs = self.result.textCursor()
-        curs.insertHtml(r)
+        self.result.setHtml(r)
